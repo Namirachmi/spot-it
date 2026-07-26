@@ -7,6 +7,9 @@
     "hono": "^4.12.32",
     "zod": "^4.4.3"
   },
+  "scripts": {
+    "seed": "tsx supabase/seed.ts"
+  },
   "devDependencies": {
     "@types/node": "^26.1.1",
     "tsx": "^4.23.0",
