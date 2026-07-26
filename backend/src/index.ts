@@ -1,14 +1,12 @@
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 
 const app = new Hono()
 
-const welcomeStrings = [
-  'Hello Hono!',
-  'To learn more about Hono on Vercel, visit https://vercel.com/docs/frameworks/backend/hono'
-]
+app.use('/api/*', cors({
+  origin: process.env.ALLOWED_ORIGIN || '*',
+}))
 
-app.get('/', (c) => {
-  return c.text(welcomeStrings.join('\n\n'))
-})
+app.get('/', (c) => c.text('Spot-It API'))
 
 export default app

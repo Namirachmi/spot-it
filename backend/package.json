@@ -2,7 +2,10 @@
   "name": "spot-it-backend",
   "type": "module",
   "dependencies": {
-    "hono": "^4.12.32"
+    "@hono/zod-validator": "^0.9.0",
+    "@supabase/supabase-js": "^2.110.8",
+    "hono": "^4.12.32",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
