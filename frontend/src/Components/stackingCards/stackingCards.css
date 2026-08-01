@@ -1,0 +1,265 @@
+.cards-stack-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 850px;
+  margin: 4rem auto 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  padding-bottom: 10vh;
+}
+
+/* Wrapper Sticky untuk animasi tumpuk */
+.sticky-card-wrapper {
+  position: sticky;
+  width: 100%;
+  margin-bottom: 5rem; /* Jarak scroll antar kartu */
+  display: flex;
+  justify-content: center;
+}
+
+/* Bentuk Utama Kartu Folder (Style Neobrutalism) */
+.folder-card {
+  position: relative;
+  width: 100%;
+  border: 4px solid #000000;
+  border-radius: 20px;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  box-sizing: border-box;
+}
+
+/* Tab Folder di Bagian Atas */
+.folder-tab {
+  position: absolute;
+  top: -50px;
+  height: 50px;
+  background-color: inherit; /* Ikut warna background folder */
+  border: 4px solid #000000;
+  border-bottom: none;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SuperBouncer';
+  font-weight: 900;
+  font-size: 36px;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.folder-card.tab-left {
+  border-top-left-radius: 0 !important;
+}
+
+/* Tab di sebelah Kiri */
+.folder-card.tab-left .folder-tab {
+  left: -4px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 20px;
+}
+
+.folder-card.tab-right {
+  border-top-right-radius: 0 !important;
+}
+
+/* Tab di sebelah Kanan */
+.folder-card.tab-right .folder-tab {
+  right: -4px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 14px;
+}
+
+/* Content Inside Cards */
+.folder-body {
+  width: 100%;
+  color: #000000;
+}
+
+/* Layout inside KnowUsCard */
+.CardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.LayerGrid {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.AboutUsContent{
+  font-family: 'PeaceSans';
+}
+
+.PinkFolder {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "PeaceSans";
+  text-align: center;
+  line-height: 1.6;
+}
+
+.OurProjectContent{
+  font-family: 'PeaceSans';
+  font-weight: 200;
+}
+
+.PhotoboothFlex {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  text-align: left;
+  font-family: "PeaceSans";
+  font-size: 24px;
+}
+
+.PhotoboothContent{
+  font-family: 'PeaceSans';
+}
+
+.MockUpBox {
+  width: 180px;
+  height: 200px;
+  background-color: #d9d9d9;
+  border: 3px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.TeamGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.TeamCard{
+  border: 3px solid #000000;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.TeamCard .imgNumber {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.TeamCard h2{
+  font-family: "SuperBouncer";
+  padding-bottom: 10px;
+}
+
+.TeamCard p{
+  font-family: "AlteHaasGrotesk";
+  padding-bottom: 10px;
+}
+
+.TeamCard.HighlightWhite {
+  background-color: #ffffff;
+}
+.TeamCard.HighlightPink {
+  background-color: #F5004F; /* sesuaikan warna pink kamu */
+}
+.TeamCard.HighlightOrange {
+  background-color: #FFAF00; /* sesuaikan warna biru kamu */
+}
+
+.LayerGrid.TeamRow {
+  background-color: #ffffff; 
+  border-radius: 20px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  display: flex;                
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  /* 1. Atur Padding Folder Card di HP */
+  .folder-card {
+    padding: 2rem 1.25rem 1.25rem 1.25rem;
+  }
+
+  /* 2. Atur Ukuran Tab Folder di HP agar tidak kebesaran */
+  .folder-tab {
+    height: 38px;
+    top: -38px;
+    padding: 0 16px;
+    font-size: 18px;
+  }
+
+  /* 3. UBAH INFO-ITEM JADI VERTIKAL (KE BAWAH) */
+  .InfoItem {
+    flex-direction: column;   /* Mengubah susunan jadi ke bawah */
+    align-items: center;      /* Rata tengah ikon & teks */
+    text-align: center;       /* Teks rata tengah */
+    gap: 1rem;
+  }
+
+  /* Perkecil Ikon di HP */
+  .IconWrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Perkecil Font Judul & Deskripsi di HP */
+  .InfoItem h3 {
+    font-size: 26px;
+  }
+
+  .InfoItem p {
+    font-size: 16px;
+  }
+
+  /* 4. Photobooth Card Responsive */
+  .PhotoboothFlex {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .LayerGrid {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;  
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .LayerGrid.TeamContainer,
+  .LayerGrid.TeamRow,
+  .TeamGrid {
+    grid-template-columns: 1fr !important; 
+    gap: 1rem;
+  }
+
+  .TeamCard:nth-child(2) {
+    border-left: none;
+    border-right: none;
+    border-top: 4px solid #000000;
+    border-bottom: 4px solid #000000;
+  }
+
+  .TeamCard {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.5rem 1rem;
+  }
+}
