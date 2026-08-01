@@ -1,0 +1,16 @@
+@font-face{
+  font-family: "PeaceSans";
+  src: url(./Assets/font/peace_sans/Peace\ Sans\ Webfont.ttf);
+}
+
+@font-face {
+  font-family: 'Super Bouncer';
+  src: url('./Assets/font/super_bouncer/Super-Bouncer.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: "AlteHaasGrotesk";
+  src: url(./Assets/font/alte_haas_grotesk/AlteHaasGroteskRegular.ttf);
+}
