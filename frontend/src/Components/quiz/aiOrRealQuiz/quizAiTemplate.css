@@ -114,11 +114,6 @@
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.AiBtn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-}
-
 .AiBtn:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #000000;

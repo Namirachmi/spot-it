@@ -79,7 +79,7 @@
 .QuestionBox h2 {
   font-family: 'SuperBouncer', 'PeaceSans', sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 200;
   color: #000000;
   margin: 0;
 }
@@ -107,11 +107,6 @@
   text-align: left;
 }
 
-.OptionButton:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-}
-
 .OptionButton:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #000000;
@@ -120,7 +115,7 @@
 .OptionLabel {
   font-family: 'SuperBouncer', sans-serif;
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 200;
   color: #FFFFFF;
   -webkit-text-stroke: 1.5px black;
   line-height: 1;
@@ -156,7 +151,7 @@
 .OfficialText {
   font-family: 'PeaceSans', sans-serif;
   font-size: 1.35rem;
-  font-weight: 900;
+  font-weight: 200;
   color: #000000;
   white-space: pre-line; /* Mempertahankan baris baru (\n) */
   line-height: 1.4;
