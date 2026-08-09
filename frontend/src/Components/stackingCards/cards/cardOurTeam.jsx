@@ -10,7 +10,7 @@ const TeamCard = ({ index }) => {
           <div className='member'>
             <img src="/src/Assets/img/starOne.png" alt="Member Number 1" className="imgNumber" />
             <h2> Chevanya K. S.</h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. </p>
+            <p> Assigned as the Project Proposal & Game Flow Designer, responsible for drafting comprehensive project proposals and mapping out user flow, and interactive logic website. </p>
           </div>
         </div>
 
@@ -18,7 +18,7 @@ const TeamCard = ({ index }) => {
           <div className='member'>
             <img src="/src/Assets/img/starTwo.png" alt="Member Number 2" className="imgNumber" />
             <h2> Keren S.</h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. </p>
+            <p> Handles all visual branding and graphic desig, styling project proposals to crafting engaging opening visual sequences for videography and media assets. </p>
           </div>
         </div>
 
@@ -26,7 +26,7 @@ const TeamCard = ({ index }) => {
           <div className='member'>
             <img src="/src/Assets/img/starThree.png" alt="Member Number 3" className="imgNumber" />
             <h2> Namira R. </h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. </p>
+            <p> Assigned as the UI/UX & Front-End Designer, responsible for crafting user interface designs in Figma and implementing them into functional React.js code. </p>
           </div>
         </div>
         </div>
@@ -36,7 +36,7 @@ const TeamCard = ({ index }) => {
           <div className='member'>
             <img src="/src/Assets/img/starFour.png" alt="Member Number 4" className="imgNumber" />
             <h2> Ramzi A. R. </h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. </p>
+            <p> Drives the engine behind the website—handling all back-end quiz mechanics, game logic, and server deployment to keep the site running smoothly. </p>
           </div>
         </div>
 
@@ -44,7 +44,7 @@ const TeamCard = ({ index }) => {
           <div className='member'>
             <img src="/src/Assets/img/starFive.png" alt="Member Number 5" className="imgNumber" />
             <h2> Tiara K.</h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. </p>
+            <p> Assigned as the Project Proposal & Game Flow Designer, responsible for drafting comprehensive project proposals and mapping out user flow, and interactive logic website. </p>
           </div>
         </div>
 
