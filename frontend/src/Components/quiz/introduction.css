@@ -1,0 +1,147 @@
+/* Container Utama */
+.openingContainer {
+  background-color: #F9E400;
+  background-image: radial-gradient(circle, #FFFFFF 6px, transparent 6px);
+  background-size: 60px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Area Konten Tengah */
+.openingContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Pembungkus posisi relatif untuk Bubble & Asterisk */
+.bubbleWrapper {
+  position: relative;
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Chat Bubble Putih */
+.chatBubble {
+  position: relative;
+  background-color: #ffffff;
+  border: 4px solid #FFFFFF;
+  border-radius: 4px;
+  padding: 2.5rem 3rem;
+  max-width: 650px;
+  z-index: 2; /* Agar berada di atas gambar asterisk bila bersentuhan */
+  box-sizing: border-box;
+}
+
+/* Ekor/Lancipan Chat Bubble di Kiri Bawah (Pakai clip-path / border trik) */
+.chatBubble::before {
+  content: '';
+  position: absolute;
+  bottom: -32px;
+  left: 35px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 35px 30px 0;
+  border-color: transparent #FFFFFF transparent transparent;
+  z-index: 2;
+}
+
+.chatBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 39px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 24px 0;
+  border-color: transparent #ffffff transparent transparent;
+  z-index: 3;
+}
+
+/* Teks di Dalam Bubble */
+.openingText {
+  font-family: "PeaceSans";
+  font-size: 1.25rem;
+  font-weight: 200;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Styling Umum Gambar Asterisk */
+.asteriskImg {
+  position: absolute;
+  width: 110px; /* Atur ukuran gambar bintang */
+  height: auto;
+  z-index: 1;  /* Berada di belakang chat bubble */
+}
+
+/* Posisi Bintang Kiri Atas */
+.asteriskTopLeft {
+  top: -40px;
+  left: -50px;
+}
+
+/* Posisi Bintang Kanan Bawah */
+.asteriskBottomRight {
+  bottom: -40px;
+  right: -50px;
+}
+
+/* Tombol Next Neobrutalism Toska (Sesuai Gambar) */
+.nextLink {
+  text-decoration: none;
+  z-index: 5;
+}
+
+.buttonNext {
+  background-color: #00E0BA;
+  padding: 10px 30px;
+  font-family: "PeaceSans";
+  font-size: 40px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  -webkit-text-stroke: 2px black;;
+  border: 3px solid #000000;
+  box-shadow: -5px 6px #000000;
+}
+
+.buttonNext:active {
+  transform: translate(-2px, 2px);
+  box-shadow: -1px 2px 0px #000000;
+}
+
+/* Responsive di HP */
+@media (max-width: 768px) {
+  .chatBubble {
+    padding: 1.5rem 1rem;
+    max-width: 90vw;
+  }
+
+  .asteriskImg {
+    width: 70px;
+  }
+
+  .asteriskTopLeft {
+    top: -25px;
+    left: -20px;
+  }
+
+  .asteriskBottomRight {
+    bottom: -25px;
+    right: -20px;
+  }
+
+  .openingText {
+    font-size: 1rem;
+  }
+}

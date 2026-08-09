@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.pageContainer {
+  background-color: #f7e000; 
+  background-image: radial-gradient(circle, #FFFFFF 6px, transparent 6px) !important;
+  background-size: 60px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quizForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 450px;
+  padding: 0 20px;
+}
+
+/* Input Nama dengan Bayangan Hitam */
+.inputName {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  text-align: center;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: -4px 5px 0px #000000;
+}
+
+/* Tombol Start Ungu Gradien */
+.buttonStart {
+  background-color: #00E0BA;
+  padding: 10px 30px;
+  font-family: "PeaceSans";
+  font-size: 40px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  -webkit-text-stroke: 2px black;;
+  border: 3px solid #000000;
+  box-shadow: -5px 6px #000000;
+}
+
+.buttonStart:active {
+  transform: translate(-2px, 2px);
+  box-shadow: -1px 2px 0px #000000;
+}
