@@ -57,28 +57,28 @@ h1{
 
 @media (max-width: 768px) {
   .HeroContent {
-    margin-top: 40px;      /* Kurangi margin atas di HP */
-    margin-bottom: 50px;   /* Kurangi margin bawah di HP */
+    margin-top: 40px;
+    margin-bottom: 50px; 
     padding: 2rem;
     gap: 1.5rem;
   }
 
   .HeroContent h1 {
-    font-size: 42px;       /* Ukuran judul disesuaikan agar muat di HP */
+    font-size: 42px; 
     -webkit-text-stroke: 1.5px #000000;
     text-shadow: -3px 4px 0px #000000;
   }
 
   .HeroContent p {
-    font-size: 16px;       /* Ukuran paragraf lebih ramah dibaca di HP */
+    font-size: 16px;
   }
 
   .HeroContent button {
-    font-size: 22px;       /* Ukuran tombol dioptimalkan untuk mobile */
+    font-size: 22px;
     padding: 12px 28px;
     border-radius: 18px;
     box-shadow: -3px 4px #000000;
-    width: 100%;           /* Pilihan: Tombol selebar layar HP */
+    width: 100%;
     max-width: 280px;
   }
 }

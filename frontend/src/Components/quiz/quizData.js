@@ -40,23 +40,56 @@ export const quizStages = [
       { 
         id: 'B', 
         label: 'B.', 
-        text: 'Check where this information comes from. (Best Option). You open the account. And it seems a little bit suspicious.', 
+        text: 'Check where this information comes from. You open the account. And it seems a little bit suspicious.', 
         colorClass: 'BtnTeal',
         nextStageIndex: 2 
       },
       { 
         id: 'C', 
         label: 'C.', 
-        text: 'Ignore the post and continue scrolling. You don\'t share it. However, your friends begin discussing it in the chatA', 
+        text: 'Ignore the post and continue scrolling. You don\'t share it. However, your friends begin discussing it in the chat', 
         colorClass: 'BtnPurple',
         nextStageIndex: 2 
       }
     ]
   },
 
-  // STAGE 2: Skenario 2 (Gambar Hilang + Teks Pernyataan di Bawah)
+  // STAGE 2: Skenario 2 (Gambar ada + Teks Pernyataan di Bawah)
   {
     id: 'stage-2',
+    imageSrc: null,
+    officialText: null,
+    questionBoxes: [
+      { id: 'q1', text: 'Is this real? My parents and everyone are already panicking.\nWhat do you reply?' },
+    ],
+    options: [
+      { 
+        id: 'A', 
+        label: 'A.', 
+        text: 'Everyone is posting it, so it must be true. Quick, share it to everyone just in case.', 
+        colorClass: 'BtnPink',
+        nextStageIndex: 3
+      },
+      { 
+        id: 'B', 
+        label: 'B.', 
+        text: 'I don\'t know.', 
+        colorClass: 'BtnTeal',
+        nextStageIndex: 3
+      },
+      { 
+        id: 'C', 
+        label: 'C.', 
+        text: 'I\'m not sure. Let\' check official sources.', 
+        colorClass: 'BtnPurple',
+        nextStageIndex: 3
+      }
+    ]
+  },
+
+  // STAGE 3: Skenario 3 (Gambar Hilang + Teks Pernyataan di Bawah)
+  {
+    id: 'stage-3',
     imageSrc: null,
     officialText: 'Official disaster agency:\n"No official warning has been issued."',
     questionBoxes: [
@@ -86,5 +119,5 @@ export const quizStages = [
         endingRoute: '/endingrisky'
       }
     ]
-  }
+  },
 ];
