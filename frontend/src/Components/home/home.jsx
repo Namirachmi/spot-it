@@ -20,7 +20,7 @@ const Home = () => {
             
             <div className="HeroContent">
               <img src="./src/Assets/img/logoProject.png" alt="Logo Spot It" />
-              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. </p>
+              <p> Welcome to Spot It! Where you will be guessing between reality and misinformation. </p>
 
               <Link to="/start">
                 <button className="btnStart"> Start the Quiz </button>
