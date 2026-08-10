@@ -9,7 +9,9 @@ const PhotoboothCard = ({ index }) => {
           <div className="MockUpBox">
             {/*<img src="" alt="Spot It Photobooth" />*/}
           </div>
-          <p className='PhotoboothContent'> Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.</p>
+          <p className='PhotoboothContent'> 
+            A complimentary photobooth installed in public spaces. Prior to access, participants complete a brief interactive misinformation challenge (1 to 2 minutes, 5 questions), after which they receive immediate feedback on their current level of awareness, along with a QR code directing them to the accompanying website.
+          </p>
         </div>
       </div>
     </FolderWrapper>

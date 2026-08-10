@@ -34,7 +34,7 @@ export const FolderWrapper = ({ children, bgColor, tabText, tabPosition = 'left'
 // Main Stacking Container
 const StackingCards = () => {
   return (
-    <div className="cards-stack-container">
+    <div id="about-us" className="cards-stack-container">
       <AboutUsCard index={0} />
       <AboutProjectCard index={1} />
       <PhotoboothCard index={2} />
