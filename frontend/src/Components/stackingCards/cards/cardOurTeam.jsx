@@ -14,7 +14,7 @@ const TeamCard = ({ index }) => {
           </div>
         </div>
 
-        <div className="TeamCard HighlightPink">
+        <div className="TeamCard HighlightOrange">
           <div className='member'>
             <img src="/src/Assets/img/starTwo.png" alt="Member Number 2" className="imgNumber" />
             <h2> Keren S.</h2>
@@ -22,7 +22,7 @@ const TeamCard = ({ index }) => {
           </div>
         </div>
 
-        <div className="TeamCard HighlightOrange">
+        <div className="TeamCard HighlightWhite">
           <div className='member'>
             <img src="/src/Assets/img/starThree.png" alt="Member Number 3" className="imgNumber" />
             <h2> Namira R. </h2>

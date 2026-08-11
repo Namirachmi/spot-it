@@ -3,27 +3,52 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../header/header'; 
 import './quizTemplate.css';
 
-import { quizStages } from './quizData';
+import { 
+  topicSelectionStage, 
+  breakingNewsStages, 
+  healthBeautyStages 
+} from './quizData';
 
 const QuizTemplate = () => {
   const navigate = useNavigate(); 
+
+  // State untuk menyimpan data topik yang sedang aktif (null saat masih di pemilihan topik)
+  const [currentTopicStages, setCurrentTopicStages] = useState(null);
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
-  const currentStage = quizStages[currentStageIndex];
+
+  // Menentukan stage mana yang aktif saat ini
+  const currentStage = currentTopicStages 
+    ? currentTopicStages[currentStageIndex] 
+    : topicSelectionStage;
 
   const handleOptionClick = (option) => {
-    // 1. Jika tombol memiliki targetRoute (seperti B. AI or Real)
-    if (option.targetRoute) {
-      navigate(option.targetRoute);
-    } 
-    // 2. Jika tombol mengarah ke stage berikutnya dalam kuis yang sama
-    else if (option.nextStageIndex !== undefined) {
-      setCurrentStageIndex(option.nextStageIndex);
-    } 
-    // 3. Jika di stage akhir dan mengarah ke ending
-    else if (option.endingRoute) {
-      navigate(option.endingRoute);
+  // 1. Pindah halaman jika ada targetRoute (misal: B. AI or Real -> /quizai)
+  if (option.targetRoute) {
+    navigate(option.targetRoute);
+    return;
+  } 
+
+  // 2. Jika di Stage 0 & memilih topik (A atau C)
+  if (option.topicKey) {
+    if (option.topicKey === 'breakingNews') {
+      setCurrentTopicStages(breakingNewsStages);
+    } else if (option.topicKey === 'healthBeauty') {
+      setCurrentTopicStages(healthBeautyStages);
     }
-  };
+    setCurrentStageIndex(0); // Set ke stage awal dari data topik baru
+    return;
+  }
+
+  // 3. Pindah stage ke pertanyaan berikutnya dalam kuis yang sama
+  if (option.nextStageIndex !== undefined) {
+    setCurrentStageIndex(option.nextStageIndex);
+  } 
+  
+  // 4. Pindah ke halaman ending saat kuis selesai
+  else if (option.endingRoute) {
+    navigate(option.endingRoute);
+  }
+};
 
   return (
     <div className="QuizPageContainer">

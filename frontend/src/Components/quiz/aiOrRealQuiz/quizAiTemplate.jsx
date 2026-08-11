@@ -11,6 +11,8 @@ const QuizAiTemplate = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentStage = aiQuizStages[currentIndex];
 
+  const isVideo = currentStage.imageSrc?.endsWith('.mp4');
+  
   const handleAnswer = (userAnswer) => {
     if (currentIndex < aiQuizStages.length - 1) {
       setCurrentIndex((prev) => prev + 1);
@@ -31,11 +33,22 @@ const QuizAiTemplate = () => {
           <img src='src/Assets/img/starPurple.png' alt="Star Decoration" className="StarPurple" />
 
           <div className="AiImageCard">
-            <img 
-              src={currentStage.imageSrc} 
-              alt="AI or Real Artwork" 
-              className="AiImage"
-            />
+            {isVideo ? (
+              <video 
+                src={currentStage.imageSrc} 
+                className="AiImage"
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+              />
+            ) : (
+              <img 
+                src={currentStage.imageSrc} 
+                alt="AI or Real Artwork" 
+                className="AiImage"
+              />
+            )}
           </div>
         </div>
 
