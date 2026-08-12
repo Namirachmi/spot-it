@@ -19,7 +19,7 @@ export const topicSelectionStage = {
 export const breakingNewsStages = [
   {
     id: 'stage-1',
-    imageSrc: '/src/Assets/img/question1-illustration.png',
+    imageSrc: '/src/Assets/img/quiz/breakingNews.png',
     officialText: null,
     questionBoxes: [{ id: 'q1', text: 'What would you do first?' }],
     options: [
@@ -30,7 +30,7 @@ export const breakingNewsStages = [
   },
   {
     id: 'stage-2',
-    imageSrc: null,
+    imageSrc: '/src/Assets/img/quiz/breakingNews.png',
     officialText: null,
     questionBoxes: [{ id: 'q1', text: 'Is this real? My parents and everyone are already panicking.\nWhat do you reply?' }],
     options: [
@@ -59,7 +59,7 @@ export const breakingNewsStages = [
 export const healthBeautyStages = [
   {
     id: 'hb-stage-1',
-    imageSrc: '/src/Assets/img/health-illustration.png',
+    imageSrc: '/src/Assets/img/quiz/healthBeauty.png',
     officialText: null,
     questionBoxes: [{ id: 'q1', text: 'Toothpaste is a safe and effective treatment for pimples.' }],
     options: [
