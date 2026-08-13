@@ -1,7 +1,7 @@
 import React from 'react';
 import { FolderWrapper } from '../stackingCards';
 
-import photoBooth from "../../Assets/img/photoBooth.png";
+import photoBooth from "../../../Assets/img/photoBooth.png";
 
 const PhotoboothCard = ({ index }) => {
   return (
