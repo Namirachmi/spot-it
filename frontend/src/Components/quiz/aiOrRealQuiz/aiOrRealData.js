@@ -12,28 +12,28 @@ export const aiQuizStages = [
     imageSrc: '/src/Assets/img/quiz/Fake/112.png',
     question: 'Is this picture ai generated or real?',
     correctAnswer: 'False',
-    nextEnding: '/endingrisky'
+    nextEnding: '/endingsafe'
   },
   {
     id: 3,
     imageSrc: '/video/109.mp4',
     question: 'Is this picture ai generated or real?',
     correctAnswer: 'False',
-    nextEnding: '/endingrisky'
+    nextEnding: '/endingsafe'
   },
   {
     id: 4,
     imageSrc: '/src/Assets/img/quiz/Real/534.jpeg',
     question: 'Is this picture ai generated or real?',
     correctAnswer: 'True',
-    nextEnding: '/endingrisky'
+    nextEnding: '/endingsafe'
   },
   {
     id: 5,
     imageSrc: '/src/Assets/img/quiz/Real/345.jpeg',
     question: 'Is this picture ai generated or real?',
     correctAnswer: 'True',
-    nextEnding: '/endingrisky'
+    nextEnding: '/endingsafe'
   }
 
 ];
