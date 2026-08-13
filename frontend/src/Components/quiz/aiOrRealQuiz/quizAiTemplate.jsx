@@ -6,8 +6,8 @@ import Header from '../../header/header';
 import { aiQuizStages } from './aiOrRealData';
 import './quizAiTemplate.css';
 
-import starTeal from '../../Assets/img/starTeal.png';
-import starPurple from '../../Assets/img/starPurple.png';
+import starTeal from '../../../Assets/img/starTeal.png';
+import starPurple from '../../../Assets/img/starPurple.png';
 
 
 const QuizAiTemplate = () => {
