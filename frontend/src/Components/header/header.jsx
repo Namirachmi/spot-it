@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './header.css'
 
+import logoTeam from './Assets/img/logoTeam.png';
+
 const Header = () => {
   return (
     <header>
       <div className="logo">
-        <img src="./src/Assets/img/logoTeam.png" alt="Logo Spot It" />
+        <img src={logoTeam} alt="Logo Spot It" />
       </div>
 
       <nav>
