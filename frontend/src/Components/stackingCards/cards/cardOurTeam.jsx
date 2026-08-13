@@ -24,7 +24,7 @@ const TeamCard = ({ index }) => {
           <div className='member'>
             <img src={starTwo} alt="Member Number 2" className="imgNumber" />
             <h2> Keren S.</h2>
-            <p> Handles all visual branding and graphic design, from styling project proposals to crafting engaging opening visual sequences for videography and media assets. </p>
+            <p> Handles all visual branding and graphic design, styling project proposals to crafting engaging opening visual sequences for videography and media assets. </p>
           </div>
         </div>
 
