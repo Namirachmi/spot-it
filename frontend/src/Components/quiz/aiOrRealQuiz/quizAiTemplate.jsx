@@ -9,15 +9,36 @@ import './quizAiTemplate.css';
 const QuizAiTemplate = () => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const currentStage = aiQuizStages[currentIndex];
+  // 1. Tambahkan state untuk mencatat jumlah jawaban salah
+  const [wrongAnswers, setWrongAnswers] = useState(0);
 
+  const currentStage = aiQuizStages[currentIndex];
   const isVideo = currentStage.imageSrc?.endsWith('.mp4');
   
   const handleAnswer = (userAnswer) => {
+    // 2. Cek apakah jawaban user salah
+    const isIncorrect = userAnswer !== currentStage.correctAnswer;
+    
+    // Hitung total kesalahan terbaru
+    const updatedWrongCount = isIncorrect ? wrongAnswers + 1 : wrongAnswers;
+
+    // Jika jawaban salah, perbarui state
+    if (isIncorrect) {
+      setWrongAnswers(updatedWrongCount);
+    }
+
+    // 3. Navigasi / Pindah Soal
     if (currentIndex < aiQuizStages.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      navigate(currentStage.nextEnding || '/endingsafe');
+      // 4. Logika penentuan ending di soal terakhir
+      // Jika salah >= 3, arahkan ke /endingrisky
+      // Jika salah <= 2, arahkan ke /endingneutral
+      if (updatedWrongCount >= 3) {
+        navigate('/endingrisky');
+      } else {
+        navigate('/endingneutral');
+      }
     }
   };
 
@@ -28,7 +49,6 @@ const QuizAiTemplate = () => {
       <main className="AiQuizContent">
         {/* Frame Gambar dengan Ornamen Gambar Bintang */}
         <div className="AiFrameWrapper">
-          {/* 2. Ganti karakter ★ dengan tag <img> */}
           <img src='src/Assets/img/starTeal.png' alt="Star Decoration" className="StarTeal" />
           <img src='src/Assets/img/starPurple.png' alt="Star Decoration" className="StarPurple" />
 
