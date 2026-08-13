@@ -1,4 +1,5 @@
-// quizData.js
+import breakingNewsImg from '../Assets/img/quiz/breakingNews.png';
+import healthBeautyImg from '../Assets/img/quiz/healthBeauty.png';
 
 // Stage 0: Pemilihan topik
 export const topicSelectionStage = {
@@ -19,7 +20,7 @@ export const topicSelectionStage = {
 export const breakingNewsStages = [
   {
     id: 'stage-1',
-    imageSrc: '/src/Assets/img/quiz/breakingNews.png',
+    imageSrc: breakingNewsImg,
     officialText: null,
     questionBoxes: [{ id: 'q1', text: 'What would you do first?' }],
     options: [
@@ -30,7 +31,7 @@ export const breakingNewsStages = [
   },
   {
     id: 'stage-2',
-    imageSrc: '/src/Assets/img/quiz/breakingNews.png',
+    imageSrc: breakingNewsImg,
     officialText: null,
     questionBoxes: [{ id: 'q1', text: 'Is this real? My parents and everyone are already panicking.\nWhat do you reply?' }],
     options: [
@@ -59,7 +60,7 @@ export const breakingNewsStages = [
 export const healthBeautyStages = [
   {
     id: 'hb-stage-1',
-    imageSrc: '/src/Assets/img/quiz/healthBeauty.png',
+    imageSrc: healthBeautyImg,
     officialText: null,
     questionBoxes: [{ id: 'q1', text: 'Toothpaste is a safe and effective treatment for pimples.' }],
     options: [
