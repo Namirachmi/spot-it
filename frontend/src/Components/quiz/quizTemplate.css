@@ -23,6 +23,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 /* Pembatas Tengah */
@@ -41,7 +42,8 @@
 }
 
 .QuestionImage {
-  width: 500px;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -194,11 +196,14 @@
 
   /* 3. Atur Card Gambar agar ukurannya menyesuaikan layar (pakai max-width 100%) */
   .QuestionImageCard {
-    width: 100%;          /* Gunakan 100% dari lebar panel pembungkusnya */
-    max-width: 100%;      /* Batasi agar tidak melebari layar */
     height: auto;         /* Ketinggian fleksibel */
-    min-height: 200px;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 420px;       /* Batas lebar maksimal kartu/gambar agar lebih pas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
   }
 
   /* 4. Pastikan Box Pertanyaan & Tombol Opsi tidak melebari layar */
