@@ -1,5 +1,5 @@
 import React from 'react';
-import { FolderWrapper } from '../StackingCards';
+import { FolderWrapper } from '../stackingCards';
 
 const AboutProjectCard = ({ index }) => {
   return (
