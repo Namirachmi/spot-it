@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './header.css'
 
-import logoTeam from './Assets/img/logoTeam.png';
+import logoTeam from "../../Assets/img/logoTeam.png";
 
 const Header = () => {
   return (
