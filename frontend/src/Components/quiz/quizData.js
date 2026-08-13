@@ -1,5 +1,5 @@
-import breakingNewsImg from '../Assets/img/quiz/breakingNews.png';
-import healthBeautyImg from '../Assets/img/quiz/healthBeauty.png';
+import breakingNewsImg from '../../Assets/img/quiz/breakingNews.png';
+import healthBeautyImg from '../../Assets/img/quiz/healthBeauty.png';
 
 // Stage 0: Pemilihan topik
 export const topicSelectionStage = {
