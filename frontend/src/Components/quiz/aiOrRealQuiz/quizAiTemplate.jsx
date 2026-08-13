@@ -6,42 +6,43 @@ import Header from '../../header/header';
 import { aiQuizStages } from './aiOrRealData';
 import './quizAiTemplate.css';
 
+
 import starTeal from '../../../Assets/img/starTeal.png';
 import starPurple from '../../../Assets/img/starPurple.png';
-
 
 const QuizAiTemplate = () => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  // 1. Tambahkan state untuk mencatat jumlah jawaban salah
   const [wrongAnswers, setWrongAnswers] = useState(0);
 
   const currentStage = aiQuizStages[currentIndex];
   const isVideo = currentStage.imageSrc?.endsWith('.mp4');
   
   const handleAnswer = (userAnswer) => {
-    // 2. Cek apakah jawaban user salah
+    // 1. Cek apakah jawaban user salah
     const isIncorrect = userAnswer !== currentStage.correctAnswer;
     
     // Hitung total kesalahan terbaru
     const updatedWrongCount = isIncorrect ? wrongAnswers + 1 : wrongAnswers;
 
-    // Jika jawaban salah, perbarui state
     if (isIncorrect) {
       setWrongAnswers(updatedWrongCount);
     }
 
-    // 3. Navigasi / Pindah Soal
+    // 2. Navigasi / Pindah Soal
     if (currentIndex < aiQuizStages.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      // 4. Logika penentuan ending di soal terakhir
-      // Jika salah >= 3, arahkan ke /endingrisky
-      // Jika salah <= 2, arahkan ke /endingneutral
-      if (updatedWrongCount >= 3) {
-        navigate('/endingrisky');
-      } else {
+      // 3. Logika 3 kondisi ending di soal terakhir
+      if (updatedWrongCount === 0) {
+        // Benar semua (salah 0)
+        navigate('/endingsafe');
+      } else if (updatedWrongCount <= 2) {
+        // Salah 1 atau 2
         navigate('/endingneutral');
+      } else {
+        // Salah 3 atau lebih
+        navigate('/endingrisky');
       }
     }
   };
