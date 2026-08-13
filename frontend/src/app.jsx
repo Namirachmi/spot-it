@@ -3,7 +3,7 @@ import Home from './Components/home/home';
 import Start from './Components/quiz/start';
 import Introduction from './Components/quiz/introduction';
 import StackingCards from './Components/stackingCards/stackingCards';
-import OpeningIntro from './Components/openingIntro/OpeningIntro';
+import OpeningIntro from './Components/openingIntro/openingIntro';
 import ReadyOrNot from './Components/quiz/readyOrNot';
 import QuizTemplate from './Components/quiz/quizTemplate';
 import EndingPage from './Components/quiz/endingPage';
