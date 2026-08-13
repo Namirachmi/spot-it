@@ -6,6 +6,10 @@ import Header from '../../header/header';
 import { aiQuizStages } from './aiOrRealData';
 import './quizAiTemplate.css';
 
+import starTeal from '../Assets/img/starTeal.png';
+import starPurple from '../Assets/img/starPurple.png';
+
+
 const QuizAiTemplate = () => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,8 +53,8 @@ const QuizAiTemplate = () => {
       <main className="AiQuizContent">
         {/* Frame Gambar dengan Ornamen Gambar Bintang */}
         <div className="AiFrameWrapper">
-          <img src='src/Assets/img/starTeal.png' alt="Star Decoration" className="StarTeal" />
-          <img src='src/Assets/img/starPurple.png' alt="Star Decoration" className="StarPurple" />
+          <img src={starTeal} alt="Star Decoration" className="StarTeal" />
+          <img src={starPurple} alt="Star Decoration" className="StarPurple" />
 
           <div className="AiImageCard">
             {isVideo ? (
