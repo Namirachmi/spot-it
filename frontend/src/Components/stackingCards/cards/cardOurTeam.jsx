@@ -1,11 +1,11 @@
 import React from 'react';
 import { FolderWrapper } from '../stackingCards';
 
-import starOne from "../../Assets/img/starOne.png";
-import starTwo from "../../Assets/img/starTwo.png";
-import starThree from "../../Assets/img/starThree.png";
-import starFour from "../../Assets/img/starFour.png";
-import starFive from "../../Assets/img/starFive.png";
+import starOne from "../../../Assets/img/starOne.png";
+import starTwo from "../../../Assets/img/starTwo.png";
+import starThree from "../../../Assets/img/starThree.png";
+import starFour from "../../../Assets/img/starFour.png";
+import starFive from "../../../Assets/img/starFive.png";
 
 const TeamCard = ({ index }) => {
   return (
