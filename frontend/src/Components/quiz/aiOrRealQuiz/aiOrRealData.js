@@ -8,7 +8,7 @@ export const aiQuizStages = [
     id: 1,
     imageSrc: imgOne,
     question: 'Is this picture ai generated or real?',
-    correctAnswer: 'False',
+    correctAnswer: 'True',
     // Route ending setelah selesai
     nextEnding: '/endingsafe'
   },
@@ -16,28 +16,28 @@ export const aiQuizStages = [
     id: 2,
     imageSrc: imgTwo,
     question: 'Is this picture ai generated or real?',
-    correctAnswer: 'False',
+    correctAnswer: 'True',
     nextEnding: '/endingsafe'
   },
   {
     id: 3,
     imageSrc: '/video/109.mp4',
     question: 'Is this picture ai generated or real?',
-    correctAnswer: 'False',
+    correctAnswer: 'True',
     nextEnding: '/endingsafe'
   },
   {
     id: 4,
     imageSrc: imgThree,
     question: 'Is this picture ai generated or real?',
-    correctAnswer: 'True',
+    correctAnswer: 'False',
     nextEnding: '/endingsafe'
   },
   {
     id: 5,
     imageSrc: imgFour,
     question: 'Is this picture ai generated or real?',
-    correctAnswer: 'True',
+    correctAnswer: 'False',
     nextEnding: '/endingsafe'
   }
 
