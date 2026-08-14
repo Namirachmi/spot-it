@@ -6,6 +6,8 @@ import StackingCards from '../stackingCards/stackingCards'
 import Start from '../quiz/start';
 import OpeningIntro from '../openingIntro/openingIntro';
 
+import logoProject from "../../Assets/img/logoProject.png"
+
 const Home = () => {
   const [showIntro, setShowIntro] = useState(true);
   
@@ -19,7 +21,7 @@ const Home = () => {
             <Header/>
             
             <div className="HeroContent">
-              <img src="./src/Assets/img/logoProject.png" alt="Logo Spot It" />
+              <img src={logoProject} alt="Logo Spot It" />
               <p> Welcome to Spot It! Where you will be guessing between reality and misinformation. </p>
 
               <Link to="/start">

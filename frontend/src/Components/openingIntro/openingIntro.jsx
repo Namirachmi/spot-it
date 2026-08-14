@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import './OpeningIntro.css';
+import './openingIntro.css';
 
 const OpeningIntro = ({ onFinish }) => {
   const videoRef = useRef(null);
