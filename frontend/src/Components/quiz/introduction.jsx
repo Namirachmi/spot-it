@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Header from '../header/header';
 import './introduction.css';
 
+import asteriskPink from "../../Assets/img/asteriskPink.png";
+import asteriskPurple from "../../Assets/img/asteriskPurple.png";
+
 const Introduction = () => {
   return (
     <div className="openingContainer">
@@ -13,7 +16,7 @@ const Introduction = () => {
         <div className="bubbleWrapper">
           {/* Gambar Asterisk Kiri Atas */}
           <img 
-            src={'src/Assets/img/asteriskPink.png'} 
+            src={asteriskPink} 
             alt="Pink Asterisk" 
             className="asteriskImg asteriskTopLeft" 
           />
@@ -31,7 +34,7 @@ const Introduction = () => {
 
           {/* Gambar Asterisk Kanan Bawah */}
           <img 
-            src={'src/Assets/img/asteriskPurple.png'} 
+            src={asteriskPurple} 
             alt="Purple Asterisk" 
             className="asteriskImg asteriskBottomRight" 
           />
