@@ -4,21 +4,24 @@ import Header from '../header/header';
 import './quizTemplate.css';
 
 import { 
-  topicSelectionStage, 
-  breakingNewsStages, 
-  healthBeautyStages 
+  topicSelectionStage
 } from './quizData';
+
+import { useScenario } from './useScenario';
 
 const QuizTemplate = () => {
   const navigate = useNavigate(); 
 
-  // State untuk menyimpan data topik yang sedang aktif (null saat masih di pemilihan topik)
-  const [currentTopicStages, setCurrentTopicStages] = useState(null);
+  // Topik yang sedang aktif (null saat masih di pemilihan topik)
+  const [topic, setTopic] = useState(null);
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
 
+  // Stage bersumber dari API (fallback silent ke data statis quizData.js)
+  const stages = useScenario(topic);
+
   // Menentukan stage mana yang aktif saat ini
-  const currentStage = currentTopicStages 
-    ? currentTopicStages[currentStageIndex] 
+  const currentStage = stages 
+    ? stages[currentStageIndex] 
     : topicSelectionStage;
 
   const handleOptionClick = (option) => {
@@ -30,12 +33,8 @@ const QuizTemplate = () => {
 
   // 2. Jika di Stage 0 & memilih topik (A atau C)
   if (option.topicKey) {
-    if (option.topicKey === 'breakingNews') {
-      setCurrentTopicStages(breakingNewsStages);
-    } else if (option.topicKey === 'healthBeauty') {
-      setCurrentTopicStages(healthBeautyStages);
-    }
-    setCurrentStageIndex(0); // Set ke stage awal dari data topik baru
+    setTopic(option.topicKey);
+    setCurrentStageIndex(0); // Set ke stage awal dari topik baru
     return;
   }
 
@@ -49,6 +48,23 @@ const QuizTemplate = () => {
     navigate(option.endingRoute);
   }
 };
+
+  // Selama fetch scenario dari API (biasanya < 300ms), tampilkan frame kosong
+  // agar tidak ada flash stage pemilihan topik
+  if (topic && !stages) {
+    return (
+      <div className="QuizPageContainer">
+        <Header />
+        <main className="QuizLayout">
+          <section className="QuizLeftPanel">
+            <div className="EmptyPanel"></div>
+          </section>
+          <div className="DividerLine"></div>
+          <section className="QuizRightPanel"></section>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="QuizPageContainer">
