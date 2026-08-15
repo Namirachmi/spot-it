@@ -65,7 +65,7 @@ export const healthBeautyStages = [
     questionBoxes: [{ id: 'q1', text: 'Toothpaste is a safe and effective treatment for pimples.' }],
     options: [
       { id: 'A', label: 'A.', text: 'True', colorClass: 'BtnPink', nextStageIndex: 1 },
-      { id: 'B', label: 'B.', text: 'False', colorClass: 'BtnTeal', nextStageIndex: 1 },
+      { id: 'B', label: 'B.', text: 'False', colorClass: 'BtnTeal', nextStageIndex: 2 },
     ]
   },
   {
@@ -77,6 +77,15 @@ export const healthBeautyStages = [
       { id: 'A', label: 'A.', text: 'High number of likes', colorClass: 'BtnPink', endingRoute: '/endingneutral' },
       { id: 'B', label: 'B.', text: 'No medical source cited', colorClass: 'BtnTeal', endingRoute: '/endingsafe'},
       { id: 'C', label: 'C.', text: 'Viral comments', colorClass: 'BtnPurple', endingRoute: '/endingrisky' }
+    ]
+  },
+  {
+    id: 'hb-stage-1-correct',
+    imageSrc: null,
+    officialText: 'Good call — you didn\'t try it. Toothpaste dries out your skin and can make irritation worse, which is why dermatologists don\'t recommend it for pimples.',
+    questionBoxes: [{ id: 'q1', text: 'Now let\'s see if you can spot the red flag in that post.' }],
+    options: [
+      { id: 'A', label: 'A.', text: 'Continue', colorClass: 'BtnTeal', nextStageIndex: 1 }
     ]
   }
 ];
