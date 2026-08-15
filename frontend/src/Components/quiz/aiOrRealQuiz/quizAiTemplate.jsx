@@ -18,31 +18,23 @@ const QuizAiTemplate = () => {
   const isVideo = currentStage.imageSrc?.endsWith('.mp4');
   
   const handleAnswer = (userAnswer) => {
-    // 1. Cek apakah jawaban user salah
-    const isIncorrect = userAnswer !== currentStage.correctAnswer;
-    
-    // Hitung total kesalahan terbaru
-    const updatedWrongCount = isIncorrect ? wrongAnswers + 1 : wrongAnswers;
-
-    if (isIncorrect) {
-      setWrongAnswers(updatedWrongCount);
+    // 1. Navigasi / Pindah Soal untuk semua stage kecuali terakhir
+    if (currentIndex < aiQuizStages.length - 1) {
+      if (userAnswer !== currentStage.correctAnswer) {
+        setWrongAnswers((prev) => prev + 1); // functional update: aman dari double-click
+      }
+      setCurrentIndex((prev) => prev + 1);
+      return;
     }
 
-    // 2. Navigasi / Pindah Soal
-    if (currentIndex < aiQuizStages.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
+    // 2. Soal terakhir: hitung total salah lalu tentukan ending
+    const finalWrong = wrongAnswers + (userAnswer !== currentStage.correctAnswer ? 1 : 0);
+    if (finalWrong === 0) {
+      navigate('/endingsafe');
+    } else if (finalWrong <= 2) {
+      navigate('/endingneutral');
     } else {
-      // 3. Logika 3 kondisi ending di soal terakhir
-      if (updatedWrongCount === 0) {
-        // Benar semua (salah 0)
-        navigate('/endingsafe');
-      } else if (updatedWrongCount <= 2) {
-        // Salah 1 atau 2
-        navigate('/endingneutral');
-      } else {
-        // Salah 3 atau lebih
-        navigate('/endingrisky');
-      }
+      navigate('/endingrisky');
     }
   };
 

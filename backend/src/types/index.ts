@@ -35,7 +35,12 @@ export interface Scenario {
     decisions: {
       id: string
       prompt: string
-      options: { id: string; text: string; result_text: string | null }[]
+      options: {
+        id: string
+        text: string
+        result_text: string | null
+        ending_type?: 'safe' | 'neutral' | 'risky'
+      }[]
       fixed_reveal_after?: string
     }[]
     ending: { reveal_points: string[]; takeaway: string }
