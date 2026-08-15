@@ -47,3 +47,20 @@ vercel deploy
 `booth_questions` RLS policy allows public SELECT on the full table (including
 `is_hoax` / `explanation` / `is_real` — the answer key). All client queries must
 go through the backend API, which strips those fields.
+
+## Scenario API — `ending_type` contract
+
+Only the **last** decision of each scenario carries `ending_type` on its options,
+one of `'safe' | 'neutral' | 'risky'` (earlier decisions are non-terminal and don't
+have it). The frontend can map it directly to an ending route via
+`/ending${ending_type}`:
+
+| `ending_type` | Route |
+|---|---|
+| `safe` | `/endingsafe` |
+| `neutral` | `/endingneutral` |
+| `risky` | `/endingrisky` |
+
+Example: `GET /api/scenario/breaking-news-01` returns the last decision's options,
+each with a valid `ending_type`; `GET /api/scenarios/health_hoax` lists the
+`health-hoax-01` scenario.

@@ -119,9 +119,9 @@ const scenarios = [
           id: 'decision_3',
           prompt: 'What will you do now?',
           options: [
-            { id: 'A', text: 'Do nothing', result_text: 'Hoax terus nyebar tanpa koreksi.' },
-            { id: 'B', text: 'Hapus bukti share, tapi diem aja', result_text: 'Kamu aman, tapi orang lain masih percaya hoax-nya.' },
-            { id: 'C', text: 'Warn everyone & koreksi diri sendiri', result_text: 'Beberapa orang di grup jadi ikutan cek ulang informasinya.' },
+            { id: 'A', text: 'Warn your friends and include the official source.', result_text: 'Beberapa orang di grup jadi ikutan cek ulang informasinya.', ending_type: 'safe' },
+            { id: 'B', text: 'Delete your share, but don\'t say anything.', result_text: 'Kamu aman, tapi orang lain masih percaya hoax-nya.', ending_type: 'neutral' },
+            { id: 'C', text: 'Leave it as it is because it\'s already everywhere', result_text: 'Hoax terus nyebar tanpa koreksi.', ending_type: 'risky' },
           ],
         },
       ],
@@ -133,6 +133,47 @@ const scenarios = [
           'Lembaga resmi belum konfirmasi apa pun',
         ],
         takeaway: 'Sebelum panik atau share, cek dulu ke sumber resmi.',
+      },
+    },
+  },
+  {
+    id: 'health-hoax-01',
+    topic: 'health_hoax',
+    title: 'Toothpaste for Pimples?',
+    thumbnail_url: null,
+    data: {
+      setup: {
+        post_text: 'Toothpaste is a safe and effective treatment for pimples.',
+        likes: 45000,
+        comments: 12000,
+        shares: 20000,
+      },
+      decisions: [
+        {
+          id: 'decision_1',
+          prompt: 'Toothpaste is a safe and effective treatment for pimples.',
+          options: [
+            { id: 'A', text: 'True', result_text: null },
+            { id: 'B', text: 'False', result_text: null },
+          ],
+        },
+        {
+          id: 'decision_2',
+          prompt: 'You decided to try it overnight. The next morning, your skin became irritated and the pimple looked even worse. Which red flag did you miss?',
+          options: [
+            { id: 'A', text: 'High number of likes', result_text: null, ending_type: 'neutral' },
+            { id: 'B', text: 'No medical source cited', result_text: null, ending_type: 'safe' },
+            { id: 'C', text: 'Viral comments', result_text: null, ending_type: 'risky' },
+          ],
+        },
+      ],
+      ending: {
+        reveal_points: [
+          'Jumlah like/share yang tinggi bukan bukti klaim kesehatan itu benar',
+          'Klaim kesehatan wajib punya rujukan medis (dokter, jurnal, instansi kesehatan resmi)',
+          'Komentar ramai bisa dimodulasi — viral bukan indikator validitas',
+        ],
+        takeaway: 'Sebelum mencoba atau membagikan klaim kesehatan, cek dulu sumber medisnya.',
       },
     },
   },
