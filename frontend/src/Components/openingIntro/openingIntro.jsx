@@ -8,7 +8,7 @@ const OpeningIntro = ({ onFinish }) => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true; // Wajib dipasang agar autoplay berjalan di Safari/Chrome
-      videoRef.current.play().catch((err) => console.log("Autoplay dicegah:", err));
+      videoRef.current.play().catch(() => {});
     }
   }, []);
 
