@@ -43,9 +43,14 @@ const answerSchema = z.object({
   answer: z.union([z.boolean(), z.enum(['left', 'right'])]),
 })
 
-const submitSchema = z.object({
-  answers: z.array(answerSchema).min(5).max(5),
-})
+const submitSchema = z
+  .object({
+    answers: z.array(answerSchema).min(5).max(5),
+  })
+  .refine(
+    (body) => new Set(body.answers.map((a) => a.question_id)).size === body.answers.length,
+    { message: 'Answers must target 5 distinct question IDs', path: ['answers'] },
+  )
 
 booth.post('/submit', zValidator('json', submitSchema), async (c) => {
   const { answers } = c.req.valid('json')

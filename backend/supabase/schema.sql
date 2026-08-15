@@ -33,6 +33,11 @@ alter table scenarios enable row level security;
 alter table topics enable row level security;
 alter table survey_responses enable row level security;
 
+-- PENTING (keamanan): policy public-read ini by design untuk hackathon, TAPI konsekuensinya
+-- siapa pun yang memegang anon key bisa SELECT is_hoax / explanation / is_real (di dalam content)
+-- langsung dari tabel ini — alias kunci jawaban. Proteksi di layer aplikasi (GET /api/booth/questions
+-- strip field sensitif) hanya jalan kalau SEMUA query datang lewat backend API.
+-- => JANGAN PERNAH pakai SUPABASE_ANON_KEY di frontend/browser. Frontend wajib query lewat API.
 create policy "public read" on booth_questions for select using (true);
 create policy "public read" on scenarios for select using (true);
 create policy "public read" on topics for select using (true);

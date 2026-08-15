@@ -40,3 +40,10 @@ vercel deploy
 | `ALLOWED_ORIGIN` | Frontend URL (optional, fallback `*`) |
 
 **DO NOT set `SUPABASE_SERVICE_ROLE_KEY` in Vercel** — it's only for local seed scripts.
+
+## Security note
+
+`SUPABASE_ANON_KEY` is backend-only. **Never use it in the frontend/browser**: the
+`booth_questions` RLS policy allows public SELECT on the full table (including
+`is_hoax` / `explanation` / `is_real` — the answer key). All client queries must
+go through the backend API, which strips those fields.
