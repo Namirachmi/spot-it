@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../header/header';
+import EndingReflection from './endingReflection';
 import './endingPage.css';
 
 const EndingPage = ({ title, message, quote, bgClass }) => {
@@ -16,6 +17,8 @@ const EndingPage = ({ title, message, quote, bgClass }) => {
             {quote && <p className="EndingQuote">{quote}</p>}
           </div>
         </div>
+
+        <EndingReflection />
 
         <Link to="/start" className="EndingRestartBtn">
           Restart

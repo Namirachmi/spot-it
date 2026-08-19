@@ -1,42 +1,32 @@
 // src/Components/quiz/QuizAiTemplate.jsx
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '../../header/header';
 import { aiQuizStages } from './aiOrRealData';
+import AiQuizResult from './aiQuizResult';
 import './quizAiTemplate.css';
 
 import starTeal from '../../../Assets/img/starTeal.png';
 import starPurple from '../../../Assets/img/starPurple.png';
 
 const QuizAiTemplate = () => {
-  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [results, setResults] = useState([]);
+
+  const finished = results.length === aiQuizStages.length;
 
   const currentStage = aiQuizStages[currentIndex];
-  const isVideo = currentStage.imageSrc?.endsWith('.mp4');
-  
-  const handleAnswer = (userAnswer) => {
-    // 1. Navigasi / Pindah Soal untuk semua stage kecuali terakhir
-    if (currentIndex < aiQuizStages.length - 1) {
-      if (userAnswer !== currentStage.correctAnswer) {
-        setWrongAnswers((prev) => prev + 1); // functional update: aman dari double-click
-      }
-      setCurrentIndex((prev) => prev + 1);
-      return;
-    }
+  const isVideo = currentStage?.imageSrc?.endsWith('.mp4');
 
-    // 2. Soal terakhir: hitung total salah lalu tentukan ending
-    const finalWrong = wrongAnswers + (userAnswer !== currentStage.correctAnswer ? 1 : 0);
-    if (finalWrong === 0) {
-      navigate('/endingsafe');
-    } else if (finalWrong <= 2) {
-      navigate('/endingneutral');
-    } else {
-      navigate('/endingrisky');
-    }
+  const handleAnswer = (userAnswer) => {
+    const isCorrect = userAnswer === currentStage.correctAnswer;
+    setResults((prev) => [...prev, isCorrect]);
+    setCurrentIndex((prev) => prev + 1);
   };
+
+  if (finished) {
+    return <AiQuizResult results={results} />;
+  }
 
   return (
     <div className="AiQuizContainer">

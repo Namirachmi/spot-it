@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../header/header'; 
+import Header from '../header/header';
+import HealthBeautyResult from './healthBeautyResult';
 import './quizTemplate.css';
 
 import { 
@@ -15,6 +16,7 @@ const QuizTemplate = () => {
   // Topik yang sedang aktif (null saat masih di pemilihan topik)
   const [topic, setTopic] = useState(null);
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
+  const [showHealthBeautyResult, setShowHealthBeautyResult] = useState(false);
 
   // Stage bersumber dari API (fallback silent ke data statis quizData.js)
   const stages = useScenario(topic);
@@ -43,11 +45,21 @@ const QuizTemplate = () => {
     setCurrentStageIndex(option.nextStageIndex);
   } 
   
-  // 4. Pindah ke halaman ending saat kuis selesai
+  // 4. Pindah ke halaman ending saat kuis selesai (Health & Beauty punya
+  //    result screen sendiri, ditampilkan langsung tanpa pindah route)
   else if (option.endingRoute) {
-    navigate(option.endingRoute);
+    if (topic === 'healthBeauty') {
+      setShowHealthBeautyResult(true);
+    } else {
+      navigate(option.endingRoute);
+    }
   }
 };
+
+  // Health & Beauty selesai: tampilkan Debunked Session (state-based)
+  if (showHealthBeautyResult) {
+    return <HealthBeautyResult />;
+  }
 
   // Selama fetch scenario dari API (biasanya < 300ms), tampilkan frame kosong
   // agar tidak ada flash stage pemilihan topik

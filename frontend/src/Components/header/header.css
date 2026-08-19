@@ -1,18 +1,28 @@
 header {
   width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 2rem;
+  padding: 0.5rem 1.5rem;
   box-sizing: border-box;
   background-color: #ffffff;
-  border-top: 4px solid #000000;
-  border-bottom: 4px solid #000000;
-  margin-top: 20px;
+  border: 4px solid #000000;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0px #000000;
+  margin: 20px auto 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: transform .3s ease;
+}
+
+header.nav-hidden {
+  transform: translateY(-120%);
 }
 
 header img{
-  width: 120px;
+  width: 95px;
   height: auto;
 }
 
@@ -24,7 +34,7 @@ header .logo h2 {
 header nav ul {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -32,24 +42,33 @@ header nav ul {
 }
 
 header nav ul li a {
-  font-family: "AlteHaasGrotesk", sans-serif;
-  font-size: 24px; /* Disesuaikan agar pas di layar laptop */
-  color: #000000;
+  font-family: "SuperBouncer", sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  background: #F5004F;
   text-decoration: none;
+  padding: 6px 14px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px #000000;
+  transition: transform .15s ease, box-shadow .15s ease;
+  display: inline-block;
 }
 
 header nav ul li a:hover {
-  font-weight: 600;
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+  font-weight: normal; /* remove old hover behavior, replaced by press effect */
 }
 
 /* --- Responsive Mobile (HP) --- */
 @media (max-width: 768px) {
   header, .HeaderContainer {
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.8rem;
   }
 
   header img {
-    width: 85px;
+    width: 70px;
   }
 
   header .logo h2 {
@@ -57,10 +76,11 @@ header nav ul li a:hover {
   }
 
   header nav ul {
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 
   header nav ul li a {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 4px 10px;
   }
 }

@@ -1,0 +1,157 @@
+/* src/Components/quiz/healthBeautyResult.css */
+
+.HbResultContainer {
+  background-color: #7C00FE;
+  background-image: radial-gradient(#FFFFFF 6px, transparent 6px);
+  background-size: 60px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.HbResultContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Chat Bubble Neobrutalism (konsisten dgn .EndingChatBubble) */
+.HbResultBubble {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 4px solid #000000;
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  max-width: 800px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.HbResultBubble::before {
+  content: '';
+  position: absolute;
+  bottom: -32px;
+  left: 35px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 35px 30px 0;
+  border-color: transparent #000000 transparent transparent;
+  z-index: 2;
+}
+
+.HbResultBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 39px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 24px 0;
+  border-color: transparent #FFFFFF transparent transparent;
+  z-index: 3;
+}
+
+.HbResultTitle {
+  font-family: 'SuperBouncer', 'PeaceSans';
+  font-size: 3.2rem;
+  font-weight: 200;
+  color: #7C00FE;
+  margin-bottom: 1.5rem;
+}
+
+.HbResultText {
+  font-family: 'PeaceSans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 200;
+  color: #000000;
+  line-height: 1.6;
+  margin: 0 0 1.2rem;
+}
+
+.HbResultHighlight {
+  color: #7C00FE;
+  -webkit-text-stroke: 1px #000000;
+}
+
+.HbResultFakeSignals {
+  background-color: #F9E400;
+  border: 3px solid #000000;
+  border-radius: 4px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.HbResultSubheading {
+  font-family: 'SuperBouncer', 'PeaceSans';
+  font-size: 1.2rem;
+  font-weight: 200;
+  color: #000000;
+  margin: 0 0 0.6rem;
+}
+
+.HbResultTextSmall {
+  font-family: 'PeaceSans', sans-serif;
+  font-size: 1rem;
+  font-weight: 200;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+
+.HbResultTextSmall:last-child {
+  margin-bottom: 0;
+}
+
+.HbResultTextSmall strong {
+  color: #7C00FE;
+  -webkit-text-stroke: 1px #000000;
+}
+
+/* Tombol Restart (konsisten dengan .EndingRestartBtn) */
+.HbResultRestartBtn {
+  margin-top: 40px;
+  display: inline-block;
+  background-color: #00E0BA;
+  color: #FFFFFF;
+  font-family: 'PeaceSans';
+  font-size: 2rem;
+  font-weight: 200;
+  text-decoration: none;
+  padding: 0.4rem 3rem;
+  border: 4px solid #000000;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px #000000;
+  -webkit-text-stroke: 2px #000000;
+  text-shadow: 1px 1px 0px #000000;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.HbResultRestartBtn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+  .HbResultBubble {
+    padding: 2rem 1rem;
+    width: 100%;
+  }
+
+  .HbResultTitle {
+    font-size: 2.2rem;
+  }
+
+  .HbResultText,
+  .HbResultTextSmall {
+    font-size: 0.95rem;
+  }
+}
