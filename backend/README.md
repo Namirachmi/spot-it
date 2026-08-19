@@ -2,6 +2,9 @@
 
 MIL (Media & Information Literacy) backend — UNESCO Youth Hackathon 2026.
 
+Hono + TypeScript API backed by Supabase (Postgres), deployed to Vercel. It
+powers the photobooth quiz and the interactive scenario website.
+
 ## Prerequisites
 
 - Node.js 24.x
@@ -12,18 +15,37 @@ MIL (Media & Information Literacy) backend — UNESCO Youth Hackathon 2026.
 
 ```bash
 npm install
+cp .env.local.example .env.local   # fill in SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
 vercel dev
 ```
 
 Open http://localhost:3000
 
-## Seed data
+## Database setup
 
-Isi `.env.local` dengan `SUPABASE_URL`, `SUPABASE_ANON_KEY`, dan `SUPABASE_SERVICE_ROLE_KEY`, lalu:
+1. Run `supabase/schema.sql` once in the Supabase SQL Editor (manual — never auto-run).
+2. Seed the data:
 
 ```bash
 npm run seed
 ```
+
+The seed script uses `SUPABASE_SERVICE_ROLE_KEY` from `.env.local` and is safe to
+re-run (idempotent upsert on `id`).
+
+## API endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/booth/questions` | 5 random questions (1 per category), with `is_hoax`, `is_real`, and `explanation` stripped |
+| POST | `/api/booth/submit` | Submit 5 answers → `{ score, level, weak_categories, notes }` |
+| GET | `/api/topics` | List the 4 scenario topics |
+| GET | `/api/scenarios/:topicId` | List scenarios in a topic |
+| GET | `/api/scenario/:scenarioId` | Full scenario detail (`setup`, `decisions`, `ending`) |
+| POST | `/api/survey` | Store a reflective survey response |
+
+Errors follow the shape `{ "error": "message" }` with status codes `400` (invalid
+input / Zod validation), `404` (resource not found), or `500` (server/database).
 
 ## Deploy to Vercel
 

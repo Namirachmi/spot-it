@@ -1,16 +1,57 @@
-# React + Vite
+# Spot-It Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MIL (Media & Information Literacy) website — UNESCO Youth Hackathon 2026.
 
-Currently, two official plugins are available:
+React + Vite frontend for the Spot-It experience: a photobooth quiz and
+interactive misinformation scenarios.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
 
-## React Compiler
+- React 19 + Vite 8
+- React Router 7
+- Framer Motion
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
 
-## Expanding the ESLint configuration
+```bash
+npm install
+cp .env.example .env   # set VITE_API_URL to your backend URL
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+`VITE_API_URL` points to the Spot-It backend (e.g. `http://localhost:3000` locally,
+or the Vercel-deployed API URL in production).
+
+## Routes
+
+| Route | Screen |
+|---|---|
+| `/` | Home |
+| `/start` | Start |
+| `/introduction` | Introduction |
+| `/readyornot` | Ready or Not |
+| `/quizbreakingnews` | Breaking News scenario quiz |
+| `/quizai` | AI or Real? quiz (5 questions) |
+| `/endingsafe` | Good ending (teal) |
+| `/endingneutral` | Neutral ending (orange) |
+| `/endingrisky` | Bad ending (pink) |
+
+## How scenarios are loaded
+
+The quiz templates fetch scenarios from the backend API via the `useScenario`
+hook (`Components/quiz/useScenario.js`): the topic listing first, then the full
+scenario detail. The last decision of each scenario maps its `ending_type`
+(`safe` / `neutral` / `risky`) to an ending route.
+
+If the API is unreachable or errors, the quiz silently falls back to the static
+data in `Components/quiz/quizData.js` — the user never sees a loading or error
+state.
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint |
+| `npm run preview` | Preview the production build locally |
