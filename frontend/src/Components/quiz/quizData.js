@@ -12,7 +12,8 @@ export const topicSelectionStage = {
   options: [
     { id: 'A', label: 'A.', text: 'Breaking News', colorClass: 'BtnPink', topicKey: 'breakingNews' },
     { id: 'B', label: 'B.', text: 'AI or Real', colorClass: 'BtnTeal', targetRoute: '/quizai' },
-    { id: 'C', label: 'C.', text: 'Health & Beauty Hoax', colorClass: 'BtnPurple', topicKey: 'healthBeauty' }
+    { id: 'C', label: 'C.', text: 'Health & Beauty Hoax', colorClass: 'BtnPurple', topicKey: 'healthBeauty' },
+    { id: 'D', label: 'D.', text: 'Emergency Alert', colorClass: 'BtnOrange', topicKey: 'emergencyAlert' }
   ]
 };
 
@@ -86,6 +87,43 @@ export const healthBeautyStages = [
     questionBoxes: [{ id: 'q1', text: 'Now let\'s see if you can spot the red flag in that post.' }],
     options: [
       { id: 'A', label: 'A.', text: 'Continue', colorClass: 'BtnTeal', nextStageIndex: 1 }
+    ]
+  }
+];
+
+// Data Topik 4: Emergency Alert (fallback statis, isi = seed emergency-alert-01)
+export const emergencyAlertStages = [
+  {
+    id: 'ea-stage-1',
+    imageSrc: breakingNewsImg,
+    officialText: null,
+    questionBoxes: [{ id: 'q1', text: 'You see a viral post: "GEMPA BESAR MALAM INI — Pemerintah minta semua warga mengungsi sekarang juga! Share ke semua grup!" What will you do first?' }],
+    options: [
+      { id: 'A', label: 'A.', text: 'Share it immediately so everyone stays safe.', colorClass: 'BtnPink', nextStageIndex: 1 },
+      { id: 'B', label: 'B.', text: 'Check official channels (BNPB/BMKG) first.', colorClass: 'BtnTeal', nextStageIndex: 1 },
+      { id: 'C', label: 'C.', text: 'Ignore and keep scrolling.', colorClass: 'BtnPurple', nextStageIndex: 1 }
+    ]
+  },
+  {
+    id: 'ea-stage-2',
+    imageSrc: breakingNewsImg,
+    officialText: null,
+    questionBoxes: [{ id: 'q1', text: 'Your mom asks: "Is this true? Should we evacuate?"' }],
+    options: [
+      { id: 'A', label: 'A.', text: '"Everyone is sharing it, so it must be true. Let\'s go!"', colorClass: 'BtnPink', nextStageIndex: 2 },
+      { id: 'B', label: 'B.', text: '"I\'m not sure. Let me check official sources first."', colorClass: 'BtnTeal', nextStageIndex: 2 },
+      { id: 'C', label: 'C.', text: '"Better safe than sorry — just go."', colorClass: 'BtnPurple', nextStageIndex: 2 }
+    ]
+  },
+  {
+    id: 'ea-stage-3',
+    imageSrc: null,
+    officialText: 'Official disaster agency: "No such warning has been issued. Please verify information through official channels."',
+    questionBoxes: [{ id: 'q1', text: 'What will you do now?' }],
+    options: [
+      { id: 'A', label: 'A.', text: 'Share the official statement and reassure your family.', colorClass: 'BtnPink', endingRoute: '/endingsafe' },
+      { id: 'B', label: 'B.', text: 'Delete your share, but don\'t say anything.', colorClass: 'BtnTeal', endingRoute: '/endingneutral' },
+      { id: 'C', label: 'C.', text: 'Leave it — the damage is done.', colorClass: 'BtnPurple', endingRoute: '/endingrisky' }
     ]
   }
 ];

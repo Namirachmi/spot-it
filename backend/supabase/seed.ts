@@ -36,8 +36,10 @@ const questions = [
     format: 'swipe',
     content: {
       options: [
-        { id: 'left', image_url: 'https://placehold.co/400x400?text=AI+Generated', is_real: false },
-        { id: 'right', image_url: 'https://placehold.co/400x400?text=Real+Photo', is_real: true },
+        // Foto asli dari aset quiz AI or Real (di-serve dari frontend demo).
+        // TODO: ganti ke hosting media permanen kalau photobooth dipakai di luar demo.
+        { id: 'left', image_url: 'https://spot-it-beta.vercel.app/quiz/103.png', is_real: false },
+        { id: 'right', image_url: 'https://spot-it-beta.vercel.app/quiz/534.jpeg', is_real: true },
       ],
     },
     explanation: 'Foto kiri hasil AI — perhatikan detail jari dan bayangan yang tidak konsisten.',
@@ -61,8 +63,10 @@ const questions = [
     format: 'swipe',
     content: {
       options: [
-        { id: 'left', image_url: 'https://placehold.co/400x400?text=Clickbait+Thumbnail', is_real: false },
-        { id: 'right', image_url: 'https://placehold.co/400x400?text=Actual+News', is_real: true },
+        // Foto asli dari aset quiz AI or Real (di-serve dari frontend demo).
+        // TODO: ganti ke hosting media permanen kalau photobooth dipakai di luar demo.
+        { id: 'left', image_url: 'https://spot-it-beta.vercel.app/quiz/112.png', is_real: false },
+        { id: 'right', image_url: 'https://spot-it-beta.vercel.app/quiz/345.jpeg', is_real: true },
       ],
     },
     explanation: 'Thumbnail kiri pakai ekspresi wajah berlebihan dan teks kuning — ciri khas clickbait. Judul asli berita jauh lebih moderat.',
@@ -153,8 +157,8 @@ const scenarios = [
           id: 'decision_1',
           prompt: 'Toothpaste is a safe and effective treatment for pimples.',
           options: [
-            { id: 'A', text: 'True', result_text: null },
-            { id: 'B', text: 'False', result_text: null },
+            { id: 'A', text: 'True', result_text: null, next_decision_id: 'decision_2' },
+            { id: 'B', text: 'False', result_text: null, next_decision_id: 'decision_3' },
           ],
         },
         {
@@ -166,6 +170,13 @@ const scenarios = [
             { id: 'C', text: 'Viral comments', result_text: null, ending_type: 'risky' },
           ],
         },
+        {
+          id: 'decision_3',
+          prompt: 'Good call — you didn\'t try it. Toothpaste dries out your skin and can make irritation worse, which is why dermatologists don\'t recommend it for pimples. Now let\'s see if you can spot the red flag in that post.',
+          options: [
+            { id: 'A', text: 'Continue', result_text: null, next_decision_id: 'decision_2' },
+          ],
+        },
       ],
       ending: {
         reveal_points: [
@@ -174,6 +185,58 @@ const scenarios = [
           'Komentar ramai bisa dimodulasi — viral bukan indikator validitas',
         ],
         takeaway: 'Sebelum mencoba atau membagikan klaim kesehatan, cek dulu sumber medisnya.',
+      },
+    },
+  },
+  {
+    id: 'emergency-alert-01',
+    topic: 'emergency_alert',
+    title: 'Evacuation Order Tonight?',
+    thumbnail_url: null,
+    data: {
+      setup: {
+        post_text: 'GEMPA BESAR MALAM INI! Pemerintah meminta semua warga mengungsi sekarang juga. Share ke semua grup!',
+        likes: 82000,
+        comments: 31000,
+        shares: 97000,
+      },
+      decisions: [
+        {
+          id: 'decision_1',
+          prompt: 'You see a viral post: "GEMPA BESAR MALAM INI — Pemerintah minta semua warga mengungsi sekarang juga! Share ke semua grup!" What will you do first?',
+          options: [
+            { id: 'A', text: 'Share it immediately so everyone stays safe.', result_text: 'Postingan menyebar ke ratusan grup dalam hitungan menit.' },
+            { id: 'B', text: 'Check official channels (BNPB/BMKG) first.', result_text: 'Kamu menemukan akun resmi yang belum mengeluarkan peringatan apa pun.' },
+            { id: 'C', text: 'Ignore and keep scrolling.', result_text: 'Keluargamu di grup mulai panik dan meminta kepastian.' },
+          ],
+        },
+        {
+          id: 'decision_2',
+          prompt: 'Your mom asks: "Is this true? Should we evacuate?"',
+          options: [
+            { id: 'A', text: '"Everyone is sharing it, so it must be true. Let\'s go!"', result_text: null },
+            { id: 'B', text: '"I\'m not sure. Let me check official sources first."', result_text: null },
+            { id: 'C', text: '"Better safe than sorry — just go."', result_text: null },
+          ],
+          fixed_reveal_after: 'Official disaster agency: "No such warning has been issued. Please verify information through official channels."',
+        },
+        {
+          id: 'decision_3',
+          prompt: 'What will you do now?',
+          options: [
+            { id: 'A', text: 'Share the official statement and reassure your family.', result_text: 'Keluargamu tenang dan mulai cek kanal resmi sebelum percaya info lain.', ending_type: 'safe' },
+            { id: 'B', text: 'Delete your share, but don\'t say anything.', result_text: 'Kamu aman, tapi kerabat lain masih percaya hoax-nya.', ending_type: 'neutral' },
+            { id: 'C', text: 'Leave it — the damage is done.', result_text: 'Hoax terus menyebar dan membuat warga panik.', ending_type: 'risky' },
+          ],
+        },
+      ],
+      ending: {
+        reveal_points: [
+          'Info darurat resmi hanya keluar dari kanal resmi (BNPB, BMKG, pemerintah daerah)',
+          'Pesan yang meminta di-share ke semua grup adalah ciri khas hoax',
+          'Panik adalah bahan bakar hoax — verifikasi dulu sebelum bertindak',
+        ],
+        takeaway: 'Sebelum menyebarkan info darurat, pastikan bersumber dari lembaga resmi.',
       },
     },
   },
