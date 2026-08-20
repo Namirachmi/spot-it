@@ -86,3 +86,17 @@ have it). The frontend can map it directly to an ending route via
 Example: `GET /api/scenario/breaking-news-01` returns the last decision's options,
 each with a valid `ending_type`; `GET /api/scenarios/health_hoax` lists the
 `health-hoax-01` scenario.
+
+### `next_decision_id` contract (branching)
+
+Non-terminal options normally advance to the **next** decision in the array. If an
+option must skip ahead (or loop back) to a different decision, it carries
+`next_decision_id` pointing to the target decision's `id`:
+
+- `decision_1` (True/False) → `True` → `{ "next_decision_id": "decision_2" }`,
+  `False` → `{ "next_decision_id": "decision_3" }`
+- `decision_3` ("Good call" reveal) → single option `Continue` →
+  `{ "next_decision_id": "decision_2" }` (loops back to the red-flag question)
+
+Terminal options are detected purely by the presence of `ending_type` (not by
+array position), so a branched flow can end before the last decision.

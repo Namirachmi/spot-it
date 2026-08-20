@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import { breakingNewsStages, healthBeautyStages } from './quizData';
+import { breakingNewsStages, healthBeautyStages, emergencyAlertStages } from './quizData';
 
 const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
 
 const TOPIC_TO_ID = {
   breakingNews: 'breaking_news',
   healthBeauty: 'health_hoax',
+  emergencyAlert: 'emergency_alert',
 };
 
 const FALLBACK_STAGES = {
   breakingNews: breakingNewsStages,
   healthBeauty: healthBeautyStages,
+  emergencyAlert: emergencyAlertStages,
 };
 
 const COLOR_CLASSES = ['BtnPink', 'BtnTeal', 'BtnPurple'];
@@ -23,10 +25,16 @@ function buildStages(scenario, topicKey) {
   const topicImg =
     topicKey === 'healthBeauty'
       ? healthBeautyStages[0].imageSrc
-      : breakingNewsStages[0].imageSrc;
+      : topicKey === 'emergencyAlert'
+        ? breakingNewsStages[0].imageSrc
+        : breakingNewsStages[0].imageSrc;
+
+  // Resolve id decision → index stage, untuk dukungan branching (next_decision_id).
+  const decisionIndexById = new Map(
+    scenario.data.decisions.map((d, idx) => [d.id, idx]),
+  );
 
   return scenario.data.decisions.map((decision, i) => {
-    const isLast = i === scenario.data.decisions.length - 1;
     const prev = scenario.data.decisions[i - 1];
     const officialText = prev?.fixed_reveal_after ?? null;
     const nextIndex = i + 1;
@@ -36,15 +44,24 @@ function buildStages(scenario, topicKey) {
       imageSrc: officialText ? null : topicImg,
       officialText,
       questionBoxes: [{ id: 'q1', text: decision.prompt }],
-      options: decision.options.map((option, j) => ({
-        id: option.id,
-        label: `${option.id}.`,
-        text: option.result_text ? `${option.text} ${option.result_text}` : option.text,
-        colorClass: COLOR_CLASSES[j % COLOR_CLASSES.length],
-        // Hanya option di decision terakhir yang menentukan ending
-        endingRoute: isLast && option.ending_type ? `/ending${option.ending_type}` : undefined,
-        nextStageIndex: isLast && option.ending_type ? undefined : nextIndex,
-      })),
+      options: decision.options.map((option, j) => {
+        // Terminal = option membawa ending_type (bukan sekadar decision terakhir),
+        // supaya branching ke decision lain tetap bisa diakhiri di tengah alur.
+        const isTerminalOption = option.ending_type != null;
+        const branchedNext =
+          option.next_decision_id != null
+            ? (decisionIndexById.get(option.next_decision_id) ?? nextIndex)
+            : nextIndex;
+
+        return {
+          id: option.id,
+          label: `${option.id}.`,
+          text: option.result_text ? `${option.text} ${option.result_text}` : option.text,
+          colorClass: COLOR_CLASSES[j % COLOR_CLASSES.length],
+          endingRoute: isTerminalOption ? `/ending${option.ending_type}` : undefined,
+          nextStageIndex: isTerminalOption ? undefined : branchedNext,
+        };
+      }),
     };
   });
 }

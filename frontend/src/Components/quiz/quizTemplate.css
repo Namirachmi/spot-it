@@ -121,6 +121,7 @@
 .BtnPink { background-color: #FF0055; }
 .BtnTeal { background-color: #00E0BA; }
 .BtnPurple { background-color: #7C00FE; }
+.BtnOrange { background-color: #FFAF00; }
 
 .QuizLeftPanel {
   position: relative; /* Untuk membantu penempatan teks di kiri bawah */

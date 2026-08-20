@@ -40,6 +40,10 @@ export interface Scenario {
         text: string
         result_text: string | null
         ending_type?: 'safe' | 'neutral' | 'risky'
+        // Option non-terminal yang MELOMPATI keputusan berikutnya (branching):
+        // arahkan ke id decision lain. Tanpa field ini, frontend lanjut ke
+        // decision berikutnya secara berurutan.
+        next_decision_id?: string
       }[]
       fixed_reveal_after?: string
     }[]
